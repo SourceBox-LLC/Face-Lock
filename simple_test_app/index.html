@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Lock Test App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Face Lock Demo App</h1>
+            <p>A simple demo of facial recognition authentication</p>
+        </header>
+
+        <div class="card" id="auth-status">
+            <div class="status-indicator offline"></div>
+            <span id="status-text">Server Status: Checking...</span>
+        </div>
+
+        <main id="app-content">
+            <!-- Login Section (default visible) -->
+            <section id="section-login" class="active">
+                <div class="card">
+                    <h2>Facial Authentication</h2>
+                    <p>Register your face or verify your identity</p>
+                    
+                    <div class="tabs">
+                        <button class="tab-btn active" data-tab="verify">Verify Face</button>
+                        <button class="tab-btn" data-tab="register">Register Face</button>
+                    </div>
+
+                    <div class="tab-content active" id="tab-verify">
+                        <div class="webcam-container">
+                            <video id="verify-video" autoplay playsinline></video>
+                            <canvas id="verify-canvas" style="display:none;"></canvas>
+                            <div class="camera-overlay">
+                                <div class="face-target"></div>
+                            </div>
+                        </div>
+                        <button id="verify-capture-btn" class="btn primary">Capture & Verify</button>
+                        <div id="verify-result" class="result-message"></div>
+                    </div>
+
+                    <div class="tab-content" id="tab-register">
+                        <div class="input-group">
+                            <label for="register-user-id">User ID:</label>
+                            <input type="text" id="register-user-id" placeholder="Enter a unique user ID">
+                        </div>
+                        <div class="input-group">
+                            <label for="register-name">Full Name:</label>
+                            <input type="text" id="register-name" placeholder="Enter your full name (optional)">
+                        </div>
+                        <div class="input-group">
+                            <label for="register-email">Email:</label>
+                            <input type="email" id="register-email" placeholder="Enter your email (optional)">
+                        </div>
+
+                        <div class="webcam-container">
+                            <video id="register-video" autoplay playsinline></video>
+                            <canvas id="register-canvas" style="display:none;"></canvas>
+                            <div class="camera-overlay">
+                                <div class="face-target"></div>
+                            </div>
+                        </div>
+                        
+                        <button id="register-capture-btn" class="btn primary">Capture & Register</button>
+                        <div id="register-result" class="result-message"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Authenticated Section (hidden by default) -->
+            <section id="section-authenticated" class="hidden">
+                <div class="card">
+                    <h2>Welcome <span id="user-name">User</span>!</h2>
+                    <p>You have been successfully authenticated using facial recognition.</p>
+                    
+                    <div class="user-info">
+                        <div class="info-item">
+                            <strong>User ID:</strong>
+                            <span id="user-id"></span>
+                        </div>
+                        <div class="info-item">
+                            <strong>Similarity Score:</strong>
+                            <span id="user-similarity"></span>
+                        </div>
+                        <div class="info-item">
+                            <strong>Authentication Time:</strong>
+                            <span id="auth-time"></span>
+                        </div>
+                    </div>
+
+                    <div class="actions">
+                        <button id="list-users-btn" class="btn secondary">List All Users</button>
+                        <button id="logout-btn" class="btn warning">Logout</button>
+                    </div>
+
+                    <div id="users-list" class="hidden">
+                        <h3>Registered Users</h3>
+                        <ul id="users"></ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Face Lock Server Demo Application</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

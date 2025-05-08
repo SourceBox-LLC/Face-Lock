@@ -270,6 +270,41 @@ This component handles:
 
 ## Integration Guide
 
+### Sample Web Application
+
+A simple test application is included in the project to demonstrate how to use the Face Lock Server for facial authentication. The application shows a complete integration example with working code.
+
+#### Test App Features
+
+- User registration with webcam face capture
+- Facial authentication and verification
+- Protected content access using JWT tokens
+- User management functionality
+
+#### Running the Test App
+
+1. Make sure the Face Lock Server is running:
+   ```bash
+   uvicorn app:app --reload
+   ```
+
+2. Start the test application:
+   ```bash
+   cd simple_test_app
+   python server.py
+   ```
+
+3. The application will open in your browser at http://localhost:8080
+
+#### Test App Structure
+
+- `index.html`: User interface with webcam integration
+- `styles.css`: Styling for the application
+- `app.js`: JavaScript client that communicates with the Face Lock Server
+- `server.py`: Simple HTTP server to host the application
+
+This sample application provides a practical reference for implementing facial authentication in your own applications.
+
 ### Integrating Face Lock with Your Applications
 
 #### Client-Side Implementation
