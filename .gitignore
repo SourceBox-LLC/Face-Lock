@@ -1,0 +1,4 @@
+venv
+.env
+reference_faces
+__pycache__
